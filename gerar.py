@@ -21,6 +21,8 @@ FUSO = zoneinfo.ZoneInfo('America/Sao_Paulo')
 AQUI = os.path.dirname(os.path.abspath(__file__))
 MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
 QUANTOS = 10
+# sem um User-Agent próprio a CentralCart (Cloudflare) recusa com o erro 1010, que barra o padrão do Python
+AGENTE = 'top-doadores/1.0 (+https://github.com/pokemaniabrasil/top-doadores)'
 MAX_PAGINAS = 500  # 100 mil pedidos no mês: trava de segurança contra laço infinito
 
 
@@ -48,7 +50,7 @@ def pedidos(chave, de, ate):
     cursor = ''
     for _ in range(MAX_PAGINAS):
         q = urllib.parse.urlencode({'page_cursor': cursor, 'page_size': 200, 'from': de, 'to': ate, 'status': 'APPROVED'})
-        req = urllib.request.Request('%s/app/order?%s' % (API, q), headers={'Authorization': 'Bearer ' + chave, 'Accept': 'application/json'})
+        req = urllib.request.Request('%s/app/order?%s' % (API, q), headers={'Authorization': 'Bearer ' + chave, 'Accept': 'application/json', 'User-Agent': AGENTE})
         with urllib.request.urlopen(req, timeout=40) as r:
             d = json.load(r)
         itens = d.get('data') or []

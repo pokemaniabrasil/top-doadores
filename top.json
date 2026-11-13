@@ -1,0 +1,58 @@
+{
+ "mes": "2026-11",
+ "mes_nome": "novembro",
+ "resultado_em": "2026-12-01T00:00:00-03:00",
+ "mudou_em": "2026-11-13T17:03:33-03:00",
+ "top": [
+  {
+   "pos": 1,
+   "nick": "LIONS",
+   "pct": 100
+  },
+  {
+   "pos": 2,
+   "nick": "FilipinhuU",
+   "pct": 58
+  },
+  {
+   "pos": 3,
+   "nick": "am4ymon",
+   "pct": 67
+  },
+  {
+   "pos": 4,
+   "nick": "Xiltiz_TT",
+   "pct": 84
+  },
+  {
+   "pos": 5,
+   "nick": "UchihaHero",
+   "pct": 41
+  },
+  {
+   "pos": 6,
+   "nick": "LEGEND_DX",
+   "pct": 99
+  },
+  {
+   "pos": 7,
+   "nick": "GabriiellGomes",
+   "pct": 74
+  },
+  {
+   "pos": 8,
+   "nick": "DELUX",
+   "pct": 99
+  },
+  {
+   "pos": 9,
+   "nick": "DENN1",
+   "pct": 91
+  },
+  {
+   "pos": 10,
+   "nick": "poney",
+   "pct": 81
+  }
+ ]
+}

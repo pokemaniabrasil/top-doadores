@@ -6,16 +6,22 @@ Calcula o top 10 doadores do mês da loja da Pokémania e publica um arquivo peq
 O arquivo publicado tem **só nicks e porcentagens**. Nenhum valor em dinheiro sai daqui.
 
 - Publicado em: <https://pokemaniabrasil.github.io/top-doadores/top.json>
-- Atualiza a cada 10 minutos (GitHub Actions). O GitHub Pages guarda o arquivo em cache por uns 10 minutos, então uma
-  compra pode levar até uns 20 minutos para aparecer.
+- Atualiza sozinho a cada 5 minutos, mais ou menos (GitHub Actions). O GitHub Pages guarda o arquivo em cache por uns
+  10 minutos, então uma compra pode levar até uns 15 a 20 minutos para aparecer.
 
 ## Como funciona
 
 1. `gerar.py` lê na API da CentralCart os pedidos **aprovados** do mês (fuso de Brasília), soma por nick e ordena.
 2. Para cada posição grava a porcentagem do caminho até a posição de cima. Exemplo: o 2º com 80 já tem 80% do que o
    1º doou. O líder fica com 100.
-3. O agendamento (`.github/workflows/atualizar.yml`) roda o script e, se o ranking mudou, grava o `top.json` na
+3. O workflow (`.github/workflows/atualizar.yml`) roda o script e, se o ranking mudou, grava o `top.json` na
    branch `gh-pages`.
+4. **É uma corrente:** cada rodada espera 5 minutos (temporizador do ambiente `espera`, que não ocupa máquina), roda e
+   chama a próxima. O agendamento do GitHub fica só de vigia, para recomeçar a corrente se ela parar: sozinho ele
+   atrasa demais (em 2026-11-13 não disparou nenhuma vez em uma hora).
+
+Para parar a corrente: crie a variável `TOP_PARAR=1` em Settings > Secrets and variables > Actions > Variables, ou
+desative o workflow. Para recomeçar, apague a variável e rode o workflow uma vez à mão (Actions > Run workflow).
 
 Vale a data do pagamento. Pedido estornado, contestado ou cancelado deixa de contar na próxima rodada. Na virada do mês
 o ranking zera.

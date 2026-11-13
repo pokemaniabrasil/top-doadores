@@ -1,12 +1,22 @@
 name: Atualizar top doadores
 
+# Como roda sozinho:
+# - Cada rodada espera 5 minutos (o ambiente "espera" tem um temporizador, que não ocupa máquina), calcula o ranking,
+#   publica se mudou e chama a próxima rodada. É uma corrente: não depende do agendamento do GitHub, que em repositório
+#   novo ou parado atrasa muito (em 2026-11-13 não disparou nenhuma vez em uma hora).
+# - O agendamento abaixo é só o vigia: se a corrente parar por algum motivo, ele começa outra.
+# - O "concurrency" garante uma corrente só: rodada nova espera a atual acabar, e uma segunda na fila derruba a primeira.
+# - Para parar: crie a variável TOP_PARAR=1 no repositório (Settings > Secrets and variables > Actions > Variables)
+#   ou desative o workflow.
+
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '13,43 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: atualizar
@@ -15,6 +25,7 @@ concurrency:
 jobs:
   atualizar:
     runs-on: ubuntu-latest
+    environment: espera
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
@@ -41,3 +52,9 @@ jobs:
           else
             echo "sem mudança no ranking"
           fi
+
+      - name: Chamar a próxima rodada
+        if: always() && vars.TOP_PARAR != '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run atualizar.yml --repo "$GITHUB_REPOSITORY" --ref main

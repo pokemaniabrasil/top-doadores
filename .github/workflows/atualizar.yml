@@ -1,0 +1,43 @@
+name: Atualizar top doadores
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Trazer o ranking publicado
+        run: |
+          git fetch origin gh-pages
+          git worktree add --detach ../site origin/gh-pages
+
+      - name: Calcular o ranking
+        env:
+          CENTRALCART_API_KEY: ${{ secrets.CENTRALCART_API_KEY }}
+        run: python3 gerar.py ../site/top.json
+
+      - name: Publicar se mudou
+        run: |
+          cd ../site
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add top.json
+            git commit -m "Ranking atualizado"
+            git push origin HEAD:gh-pages
+          else
+            echo "sem mudança no ranking"
+          fi

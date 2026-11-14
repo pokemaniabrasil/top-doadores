@@ -2,7 +2,7 @@
  "mes": "2026-11",
  "mes_nome": "novembro",
  "resultado_em": "2026-12-01T00:00:00-03:00",
- "mudou_em": "2026-11-14T09:00:14-03:00",
+ "mudou_em": "2026-11-14T09:05:26-03:00",
  "top": [
   {
    "pos": 1,
@@ -27,12 +27,12 @@
   {
    "pos": 5,
    "nick": "UchihaHero",
-   "pct": 51
+   "pct": 54
   },
   {
    "pos": 6,
    "nick": "LEGEND_DX",
-   "pct": 81
+   "pct": 76
   },
   {
    "pos": 7,

@@ -2,7 +2,7 @@
  "mes": "2026-11",
  "mes_nome": "novembro",
  "resultado_em": "2026-12-01T00:00:00-03:00",
- "mudou_em": "2026-11-14T17:02:12-03:00",
+ "mudou_em": "2026-11-15T23:12:17-03:00",
  "top": [
   {
    "pos": 1,
@@ -31,23 +31,23 @@
   },
   {
    "pos": 6,
-   "nick": "LEGEND_DX",
-   "pct": 76
+   "nick": "DELUX",
+   "pct": 88
   },
   {
    "pos": 7,
+   "nick": "LEGEND_DX",
+   "pct": 86
+  },
+  {
+   "pos": 8,
    "nick": "GabriiellGomes",
    "pct": 74
   },
   {
-   "pos": 8,
-   "nick": "DELUX",
-   "pct": 99
-  },
-  {
    "pos": 9,
    "nick": "DENN1",
-   "pct": 91
+   "pct": 90
   },
   {
    "pos": 10,

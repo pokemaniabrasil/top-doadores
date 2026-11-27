@@ -2,7 +2,7 @@
  "mes": "2026-11",
  "mes_nome": "novembro",
  "resultado_em": "2026-12-01T00:00:00-03:00",
- "mudou_em": "2026-11-27T02:00:00-03:00",
+ "mudou_em": "2026-11-27T02:05:13-03:00",
  "top": [
   {
    "pos": 1,
@@ -41,18 +41,18 @@
   },
   {
    "pos": 8,
-   "nick": "GabriiellGomes",
-   "pct": 74
+   "nick": "DENN1",
+   "pct": 83
   },
   {
    "pos": 9,
-   "nick": "DENN1",
-   "pct": 90
+   "nick": "GabriiellGomes",
+   "pct": 89
   },
   {
    "pos": 10,
    "nick": "OceanWakeKIng",
-   "pct": 92
+   "pct": 83
   }
  ]
 }

@@ -2,7 +2,7 @@
  "mes": "2026-11",
  "mes_nome": "novembro",
  "resultado_em": "2026-12-01T00:00:00-03:00",
- "mudou_em": "2026-11-27T18:06:04-03:00",
+ "mudou_em": "2026-11-27T21:43:55-03:00",
  "top": [
   {
    "pos": 1,
@@ -46,13 +46,13 @@
   },
   {
    "pos": 9,
-   "nick": "DENN1",
-   "pct": 83
+   "nick": "GabriiellGomes",
+   "pct": 97
   },
   {
    "pos": 10,
-   "nick": "DekuRito",
-   "pct": 93
+   "nick": "DENN1",
+   "pct": 84
   }
  ]
 }
